@@ -13,7 +13,7 @@
 function +vi-git-status() {
   # Check for untracked files or updated submodules since vcs_info does not.
   if [[ -n $(git ls-files --other --exclude-standard 2> /dev/null) ]]; then
-    hook_com[unstaged]=' %F{8}✗%f'
+    hook_com[unstaged]=' %F{red}✗%f'
   fi
 }
 
@@ -42,13 +42,13 @@ function prompt_peepcode_setup {
   zstyle ':vcs_info:*' check-for-changes true
   zstyle ':vcs_info:*' get-revision true
   zstyle ':vcs_info:*' use-simple true
-  zstyle ':vcs_info:*' unstagedstr ' %F{8}✗%f'
-  zstyle ':vcs_info:*' formats ' %F{8}%b%f %F{white}%.7i%f%u'
-  zstyle ':vcs_info:*' actionformats ' %F{8}%b%f %F{white}%.7i%f +%a%u'
+  zstyle ':vcs_info:*' unstagedstr ' %F{red}✗%f'
+  zstyle ':vcs_info:*' formats ' %F{green}%b%f %F{blue}%.7i%f%u'
+  zstyle ':vcs_info:*' actionformats ' %F{green}%b%f %F{blue}%.7i%f +%a%u'
   zstyle ':vcs_info:git*+set-message:*' hooks git-status
 
   # Set ruby-info parameters.
-  zstyle ':prezto:module:ruby:info:version' format ' %F{white}%v%f'
+  zstyle ':prezto:module:ruby:info:version' format ' %F{blue}%v%f'
 
   # Define prompts.
   PROMPT="
